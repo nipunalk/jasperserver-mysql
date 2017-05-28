@@ -23,8 +23,8 @@ RUN wget "http://downloads.sourceforge.net/project/jasperserver/JasperServer/Jas
 # Used to wait for the database to start before connecting to it
 # This script is from https://github.com/vishnubob/wait-for-it
 # as recommended by https://docs.docker.com/compose/startup-order/
-#ADD wait-for-it.sh /wait-for-it.sh
-#RUN chmod a+x /wait-for-it.sh
+ADD wait-for-it.sh /wait-for-it.sh
+RUN chmod a+x /wait-for-it.sh
 
 # Used to bootstrap JasperServer the first time it runs and start Tomcat each
 ADD entrypoint.sh /entrypoint.sh
