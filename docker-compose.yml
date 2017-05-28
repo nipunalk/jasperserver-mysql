@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+
+  mysql:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysql
+
+  jasperserver:
+    image: tecbi/jasperserver-mysql
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_TYPE=mysql
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASSWORD=mysql
+    volumes:
+      # Relative path on the host/volume on container
+      - ./jasperserver-import:/jasperserver-import
+    depends_on:
+      - mysql
